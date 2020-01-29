@@ -6,31 +6,37 @@ def verification (age, sex, situation, SDate):
     # Fecha actual
     actual = date.today()
 
+    # Semanas reglamentarias
+    diasCotizados = 750*7
+
+    # Edad reglamentaria
+    edadH = 60
+    edadM = 55
+
     paid = (actual - SDate).days
-    if (paid >= 750*5):
+    if (paid >= diasCotizados):
         if(sex == 1): # Los masculinos
-            if(situation == 0 and age >= 60): # Situacion salubre y dentro del rango debido
+            if(situation == 0 and age >= edadH): # Situacion salubre y dentro del rango debido
                 return True
             elif(situation == 1): # Situacion insalubre
                 Fnumber = (paid/365) // 4 # Numero de anios en los que trabaja insalubre
                 if(Fnumber >= 1 and Fnumber <= 5): # El numero de anios permitido
-                    if(age >= 60 - Fnumber):
-                        return True
-                    else:
-                        return False
-            elif(situation == 0 and age < 60): # Situacion salubre y fuera del rango debido
+                    return age >= edadH - Fnumber
+                elif(Fnumber > 5):
+                    return age >= edadH -5
+            elif(situation == 0 and age < edadH): # Situacion salubre y fuera del rango debido
                 return False
 
         elif(sex == 0): # Las masculinas
-            if(situation == 0 and age >= 55): # Situacion salubre y dentro del rango debido
+            if(situation == 0 and age >= edadM): # Situacion salubre y dentro del rango debido
                 return True
             elif(situation == 1): # Situacion insalubre
                 Fnumber = (paid/365) // 4 # Numero de anios en los que trabaja insalubre
                 if(Fnumber >= 1 and Fnumber <= 5): # El numero de anios permitido
-                    return age >= 55 - Fnumber
+                    return age >= edadM - Fnumber
                 elif (Fnumber > 5):
-                    return age >= 50
-            elif(situation == 0 and age < 55): # Situacion salubre y fuera del rango debido
+                    return age >= edadM - 5
+            elif(situation == 0 and age < edadM): # Situacion salubre y fuera del rango debido
                 return False
     else:
         return False
