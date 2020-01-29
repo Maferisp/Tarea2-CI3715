@@ -30,7 +30,7 @@ class PensionStatus(unittest.TestCase):
     #########################################################
     ######## Mujer no trajando en lugares insalubres ########
 
-    # Mujer trabajando en lugares insalubres 
+    # Mujer trabajando en lugares insalubres, cumplen con edad y semanas. Optiene pension
     def test_female_unHealthy(self):
         edad = 50
         sexo = 0
@@ -54,21 +54,21 @@ class PensionStatus(unittest.TestCase):
     ########################################################
     ######### Hombre trabajando en lugares saludres ########
 
-    # Hombre trabajando en lugares salubre, cumple con la edad y las 750 semanas
+    # Hombre trabajando en lugares salubre, cumple con la edad y las 750 semanas. Optiene pension
     def test_male_healthy(self):
         edad = 60
         sexo = 1
         situation = 0 
         self.assertTrue(Pension.verification(edad, sexo, situation, date(2000,2,13)), 'No se cumplen los requisitos')
 
-    # Hombre trabajando en lugares salubre, cumple con la edad y no las 750 semanas
+    # Hombre trabajando en lugares salubre, cumple con la edad y no las 750 semanas. No optiene pension
     def test_male_healthy_not(self):
         edad = 65
         sexo = 1
         situation = 0 
         self.assertFalse(Pension.verification(edad, sexo, situation, date(2013,2,13)), 'No se cumplen los requisitos')
 
-    # Hombre trabajando en lugares salubre, no cumple con la edad y las 750 semanas
+    # Hombre trabajando en lugares salubre, no cumple con la edad y las 750 semanas. No optiene pension
     def test_male_healthy_not_ages(self):
         edad = 55
         sexo = 1
@@ -78,21 +78,21 @@ class PensionStatus(unittest.TestCase):
     ##########################################################
     ######### Hombre trabajando en lugares insaludres ########
 
-    # Hombre trabajando en lugares insalubres, cumple con la edad y las 750 semanas
+    # Hombre trabajando en lugares insalubres, cumple con la edad y las 750 semanas. Optiene pension
     def test_male_unhealthy(self):
         edad = 56
         sexo = 1
         situation = 1 
         self.assertTrue(Pension.verification(edad, sexo, situation, date(2000,2,13)), 'No se cumplen los requisitos')
 
-    # Hombre trabajando en lugares insalubres, cumple con la edad y no las 750 semanas
+    # Hombre trabajando en lugares insalubres, cumple con la edad y no las 750 semanas. No optiene pension
     def test_male_unhealthy_not(self):
         edad = 65
         sexo = 1
         situation = 1 
         self.assertFalse(Pension.verification(edad, sexo, situation, date(2012,2,13)), 'No se cumplen los requisitos')
 
-    # Hombre trabajando en lugares insalubres, no cumple con la edad y las 750 semanas
+    # Hombre trabajando en lugares insalubres, no cumple con la edad y las 750 semanas. No optiene pension
     def test_male_unhealthy_not_ages(self):
         edad = 55
         sexo = 1
