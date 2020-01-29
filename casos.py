@@ -75,7 +75,7 @@ class PensionStatus(unittest.TestCase):
         situation = 0 
         self.assertFalse(Pension.verification(edad, sexo, situation, date(1993,2,13)), 'No se cumplen los requisitos')
 
-    #########################################################
+    ##########################################################
     ######### Hombre trabajando en lugares insaludres ########
 
     # Hombre trabajando en lugares insalubres, cumple con la edad y las 750 semanas
