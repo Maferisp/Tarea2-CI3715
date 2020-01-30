@@ -92,7 +92,7 @@ class PensionStatus(unittest.TestCase):
         situation = 1 
         self.assertFalse(Pension.verification(edad, sexo, situation, date(2012,2,13)), 'No se cumplen los requisitos')
 
-    # Hombre trabajando en lugares insalubres, no cumple con la edad y las 750 semanas. No optiene pension
+    # Hombre trabajando en lugares insalubres, cumpple con las semanas pero no con la edad. No optiene pension
     def test_male_unhealthy_not_ages(self):
         edad = 55
         sexo = 1
